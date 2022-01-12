@@ -10,6 +10,7 @@ scalaVersion := "2.13.7"
 libraryDependencies += ws
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+libraryDependencies += "org.scalaj" % "scalaj-http_2.11" % "2.3.0"
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 
