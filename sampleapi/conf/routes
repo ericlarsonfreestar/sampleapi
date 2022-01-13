@@ -1,1 +1,2 @@
-GET	/pokemon		controllers.PokemonController.getAll()
+GET	/pokemon/					controllers.PokemonController.getAll()
+GET	/pokemon/:pokemonName		controllers.PokemonController.getPokemon(pokemonName:String)
