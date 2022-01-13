@@ -3,12 +3,13 @@ package controllers
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}
 import play.api.libs.json._
 import javax.inject._
-import models.PokemonType
+import models._
 
 import play.api.mvc._
 import play.api.libs.ws.{WSRequest, WSResponse, WSClient, WSBodyReadables}
 import play.api.http.HttpEntity
 import scala.concurrent.{Future, Await}
+import scala.util.{Failure, Success}
 import scala.concurrent.duration._
 import scala.io.Source.fromURL
 
@@ -24,21 +25,26 @@ class PokemonController @Inject() (ws: WSClient, val controllerComponents: Contr
   }
 
   def getPokemon(pokemonName: String): Action[AnyContent] = Action {
-    val pokeUrl = "https://pokeapi.co/api/v2/pokemon/" + pokemonName
-    val futureResult: Future[String] = ws.url(pokeUrl).get().map { response =>
-      (response.json \ "types" \ "name").as[String]
-    }
-
     try {
-      futureResult.map {slot => Ok(slot)}
+      val pokeUrl = "https://pokeapi.co/api/v2/pokemon/" + pokemonName
+    
+      val futureResult = ws.url(pokeUrl).get().map { response =>
+        response.json           
+      }
+      val response = Await.result(futureResult, 10.second)
+      // validate the repsonse
+   
+      val types:JsValue = response("types")
+      Ok(types)
     }
     catch {
-      case foo: JsResultException => println("Threw excetpion trying Ok()")
+      case e: Exception => NoContent
     }
-    Ok(futureResult)
+    
+    
   }
     
-  
+
 }
 
 
