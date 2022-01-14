@@ -10,6 +10,10 @@ scalaVersion := "2.13.7"
 libraryDependencies += ws
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+libraryDependencies += "de.leanovate.play-mockws" %% "play-mockws" % "2.8.0" % Test
+libraryDependencies ++= Seq(
+  "org.scalatestplus.play" %% "scalatestplus-play" % "x.x.x" % "test"
+)
 
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
