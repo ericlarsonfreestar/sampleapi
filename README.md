@@ -9,7 +9,7 @@ This is a sampleapi project.  This project is an API to check a given pokemon's 
 
 Ex: `curl -v localhost:9000/pokemon/charizard`
 Returns: 
-[
+`[
     {
         "slot": 1,
         "type": {
@@ -24,4 +24,4 @@ Returns:
             "url": "https://pokeapi.co/api/v2/type/2/"
         }
     }
-]
+]`
