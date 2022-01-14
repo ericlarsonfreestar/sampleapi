@@ -8,20 +8,21 @@ This is a sampleapi project.  This project is an API to check a given pokemon's 
 `$curl localhost:9000/pokemon/{pokemonName}`, where pokemonName is any valid pokemon from the games.
 
 Ex: `curl -v localhost:9000/pokemon/charizard`
+
 Returns: 
-`[
-    {
-        "slot": 1,
-        "type": {
-            "name": "fire",
-            "url": "https://pokeapi.co/api/v2/type/10/"
+    `[
+        {
+            "slot": 1,
+            "type": {
+                "name": "fire",
+                "url": "https://pokeapi.co/api/v2/type/10/"
+            }
+        },
+        {
+            "slot": 2,
+            "type": {
+                "name": "fighting",
+                "url": "https://pokeapi.co/api/v2/type/2/"
+            }
         }
-    },
-    {
-        "slot": 2,
-        "type": {
-            "name": "fighting",
-            "url": "https://pokeapi.co/api/v2/type/2/"
-        }
-    }
-]`
+    ]`
